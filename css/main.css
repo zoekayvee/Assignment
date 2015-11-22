@@ -1,0 +1,16 @@
+.card{
+  border: 0px;
+  width: 50%;
+  position: relative;
+  padding: 5px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }

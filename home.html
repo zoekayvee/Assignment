@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html ng-app="Sorted">
+
+  <head>
+
+    <title>
+      Sort It
+    </title>
+
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="css/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script type="text/javascript" src="js/shared/angular.min.js"></script>
+  </head>
+
+
+  <body ng-app="Sorted" ng-controller="main">
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Sorted</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#!"><i class="material-icons">search</i></a></li>
+        <li><a href="#!"><i class="material-icons">view_module</i></a></li>
+        <li><a href="#!"><i class="material-icons">more_vert</i>
+      </ul>
+    </div>
+  </nav>
+
+
+<div class="row">
+  <div class="col s10 m6 l4">
+    <div class="card blue-grey darken-1">
+      <div class="card-content">
+        <span class="card-title">To Do:</span>
+        <br>
+
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><i class="material-icons">library_add</i>New Task</div>
+            <div class="collapsible-body">
+              <form ng-submit="todoAdd()">
+              <div class="input-field" style="padding: 10px">
+                <input type="text" ng-model="ToDoInput">
+                <label for="list_title">Task</label>
+              </div>
+              <button class="btn waves-effect waves-light" type="submit">
+              Submit
+              <i class="material-icons right">send</i>
+              </button>
+              </form>
+            </li>
+          </div>
+          </ul>
+
+          <div class = "white-text" style="padding-left: 20px; padding-bottom: 10px" ng-repeat="x in ToDoList">
+              <span ng-bind="x.ToDoTask"></span>
+          </div>
+    </div>
+</div>
+
+<div class="col s10 m6 l4">
+  <div class="card blue-grey darken-1">
+    <div class="card-content">
+      <span class="card-title">On Going:</span>
+      <br>
+
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">library_add</i>New Task</div>
+          <div class="collapsible-body">
+            <form ng-submit="OnGoingAdd()">
+            <div class="input-field" style="padding: 10px">
+              <input type="text" ng-model="OnGoingInput">
+              <label for="list_title">Task</label>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">
+            Submit
+            <i class="material-icons right">send</i>
+            </button>
+            </form>
+          </li>
+        </div>
+        </ul>
+
+        <div class = "white-text" style="padding-left: 20px; padding-bottom: 10px" ng-repeat="x in OnGoingList">
+            <span ng-bind="x.OnGoingTask"></span>
+        </div>
+  </div>
+</div>
+
+<div class="col s10 m6 l4">
+  <div class="card blue-grey darken-1">
+    <div class="card-content">
+      <span class="card-title">Completed:</span>
+      <br>
+
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">library_add</i>New Task</div>
+          <div class="collapsible-body">
+            <form ng-submit="CompletedAdd()">
+            <div class="input-field" style="padding: 10px">
+              <input type="text" ng-model="CompletedInput">
+              <label for="list_title">Task</label>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">
+            Submit
+            <i class="material-icons right">send</i>
+            </button>
+            </form>
+          </li>
+        </div>
+        </ul>
+
+        <div class = "white-text" style="padding-left: 20px; padding-bottom: 10px" ng-repeat="x in CompletedList">
+            <span ng-bind="x.CompletedTask"></span>
+        </div>
+</div>
+</div>
+
+
+<script>
+var app = angular.module('Sorted', []);
+app.controller('main', function($scope) {
+    $scope.ToDoList = [];
+
+    $scope.todoAdd = function() {
+        $scope.ToDoList.push({ToDoTask:$scope.ToDoInput});
+        $scope.ToDoInput = "";
+    };
+
+    $scope.OnGoingList = [];
+
+    $scope.OnGoingAdd = function() {
+        $scope.OnGoingList.push({OnGoingTask:$scope.OnGoingInput});
+        $scope.OnGoingInput = "";
+    };
+
+    $scope.CompletedList = [];
+
+    $scope.CompletedAdd = function() {
+        $scope.CompletedList.push({CompletedTask:$scope.CompletedInput});
+        $scope.CompletedInput = "";
+    };
+});
+</script>
+
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+
+</html>
